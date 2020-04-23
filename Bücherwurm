@@ -1,0 +1,408 @@
+using System;
+using System.Collections.Generic;
+//ExemplarID zu Ausleihe, Buch mit Exemplare löschen, JSON-Datei, Dauer Ausleihe 
+namespace Bücherwurm
+{
+// Klasse Bücher, Exemplare und Ausleihe als Datenbank      
+    class Program
+    {
+        bool Beenden;
+        string Auswahl;
+        static public void Main(string[] args)
+        {
+            Program Program1 = new Program(false, "");
+            Buch Buch1 = new Buch();
+            Exemplar exemplar1 = new Exemplar();
+            Ausleihe ausleihe1 = new Ausleihe();
+            Datenbank Ausleihe = new Datenbank();
+            Datenbank Bücher = new Datenbank();
+            Datenbank Exemplare = new Datenbank();
+            
+            while (Program1.Beenden == false) 
+            {
+                Program1.Auswahl = Program1.Auswahloptionen(Program1.Auswahl);
+                if (Program1.Auswahl == "b")
+                {
+                    Buch1.Crud(Program1.Auswahl, Buch1, Bücher.Bücher, Exemplare.Exemplare);
+                }
+                else if (Program1.Auswahl == "e")
+                {
+                    exemplar1.Crud(Program1.Auswahl, exemplar1, Exemplare.Exemplare, Bücher.Bücher);
+                }
+                else if (Program1.Auswahl == "a")
+                {
+                    ausleihe1.Crud(Program1.Auswahl, ausleihe1, Ausleihe.Ausleihe, exemplar1, Exemplare.Exemplare);
+                }
+                else if (Program1.Auswahl == "q")
+                {
+                    Program1.Beenden = true;
+                }
+                else
+                {
+                    Console.Write("\nungültige Eingabe\nBitte nochmal versuchen");
+                }
+            }
+        }
+        public Program(bool Beenden, string Auswahl)
+        {
+            this.Beenden = Beenden;
+            this.Auswahl = Auswahl;
+        }
+
+         string Auswahloptionen(string Auswahl)
+        {
+            
+            Console.Write("\nBücherverleih Bücherwurm\n");
+            Console.Write("\nFür die Liste der Bücher 'b' eingeben\n");
+            Console.Write("Für die Liste der Exemplare 'e' eingeben\n");
+            Console.Write("Für die Liste der Ausleihe 'a' eingeben\n");
+            Console.Write("Für das Beenden des Programms 'q' eingeben\n");
+            return Auswahl = Console.ReadLine();  
+        }
+    }
+    public class Datenbank
+    {
+        public Dictionary<int, Buch> Bücher = new Dictionary<int, Buch>();
+        public Dictionary<int, Exemplar> Exemplare = new Dictionary<int, Exemplar>();
+        public Dictionary<int, Ausleihe> Ausleihe = new Dictionary<int, Ausleihe>();
+    }
+    public class Buch
+    {
+
+        public int BuchID = 0;
+        public string Autor { get; set; }
+        public string Landdesautoren { get; set; }
+        public string Bildlink { get; set; }
+        public string Sprache { get; set; }
+        public string Link { get; set; }
+        public int Seiten { get; set; }
+        public string Titel { get; set; }
+        public int Erscheinungsjahr { get; set; }
+        public Buch() { }
+        public Buch(string Autor, string Landdesautoren, string Bildlink,
+        string Sprache, string Link, int Seiten, string Titel, int Erscheinungsjahr)
+        {
+            
+            this.Autor = Autor;
+            this.Landdesautoren = Landdesautoren;
+            this.Bildlink = Bildlink;
+            this.Sprache = Sprache;
+            this.Link = Link;
+            this.Seiten = Seiten;
+            this.Titel = Titel;
+            this.Erscheinungsjahr = Erscheinungsjahr;
+        }
+
+        public void Crud(string Auswahl, Buch buch, Dictionary<int, Buch> Bücher, Dictionary<int, Exemplar> Exemplare)
+        {
+            bool OffenUnterprogramm = true;
+            while (OffenUnterprogramm == true)
+            {
+                Console.Write("Für das Anlegen eines neuen Buches 'c' eingeben\n");
+                Console.Write("Für das Auslesen aller Bücher 'r' eingeben\n");
+                Console.Write("Für das Bearbeiten eines Buches 'u' eingeben\n");
+                Console.Write("Für das Löschen eines Buches 'd' eingeben\n");
+                Console.Write("Für das Beenden des Unterprogramms 'q' eingeben\n");
+                Auswahl = Console.ReadLine();
+                if (Auswahl == "c")
+                    buch.Anlegen(Bücher, buch);
+                else if (Auswahl == "r")
+                    buch.Auslesen(Bücher, buch);
+                else if (Auswahl == "u")
+                    buch.Bearbeiten(Bücher, buch);
+                else if (Auswahl == "d")
+                    buch.Löschen(Bücher, buch, Exemplare);
+                else if (Auswahl == "q")
+                    OffenUnterprogramm = false;
+                else
+                    Console.WriteLine("Eingabe ungültig");
+            }
+        }
+        public void Anlegen(Dictionary<int, Buch> Bücher, Buch buch)
+        {
+            buch = new Buch(Autor = Console.ReadLine(), Landdesautoren = Console.ReadLine(), Bildlink = Console.ReadLine(), 
+                Sprache = Console.ReadLine(), Link = Console.ReadLine(), Seiten = Convert.ToInt32(Console.ReadLine()),
+                Titel = Console.ReadLine(), Erscheinungsjahr = Convert.ToInt32(Console.ReadLine()));
+            BuchID = SetzeBuchID(BuchID);
+            Bücher.Add(BuchID,buch);
+
+        }  
+        static int SetzeBuchID(int BuchIncrement)
+        {
+            return BuchIncrement = BuchIncrement + 1;
+        }
+        void Auslesen(Dictionary<int, Buch> Bücher, Buch buch) 
+        {
+            for(int i = 1; i <= BuchID; i++)
+            {
+                Console.WriteLine(i + " " + Bücher[i].Autor + Bücher[i].Landdesautoren + Bücher[i].Bildlink + 
+                    Bücher[i].Sprache +  Bücher[i].Link + Bücher[i].Seiten + Bücher[i].Titel + Bücher[i].Erscheinungsjahr);
+            }
+        }
+        void Bearbeiten(Dictionary<int, Buch> Bücher, Buch buch)
+        {
+            int i = Convert.ToInt32(Console.ReadLine());
+            string Autor = Console.ReadLine();
+            if(Autor != "")
+            {
+                Bücher[i].Autor = Autor;
+            }
+            string Landdesautoren = Console.ReadLine();
+            if (Landdesautoren != "")
+            {
+                Bücher[i].Landdesautoren = Landdesautoren;
+            }
+            string Bildlink = Console.ReadLine();
+            if (Bildlink != "")
+            {
+                Bücher[i].Bildlink = Bildlink;
+            }
+            string Sprache = Console.ReadLine();
+            if (Sprache != "")
+            {
+                Bücher[i].Sprache = Sprache;
+            }
+            string Link = Console.ReadLine();
+            if (Link != "")
+            {
+                Bücher[i].Link = Link;
+            }
+            int Seiten = Convert.ToInt32(Console.ReadLine());
+            if (Seiten != Convert.ToInt32(""))
+            {
+                Bücher[i].Seiten = Seiten;
+            }
+            string Titel = Console.ReadLine();
+            if (Titel != "")
+            {
+                Bücher[i].Titel = Titel;
+            }
+            int Erscheinungsjahr = Convert.ToInt32(Console.ReadLine());
+            if (Erscheinungsjahr != Convert.ToInt32(""))
+            {
+                Bücher[i].Erscheinungsjahr = Erscheinungsjahr;
+            }
+
+        }
+        void Löschen(Dictionary<int, Buch> Bücher, Buch buch, Dictionary<int, Exemplar> Exemplare)
+        {
+            int i = Convert.ToInt32(Console.ReadLine());
+            Bücher.Remove(i);
+            Exemplare.Remove(BuchID = i); //noch Fehlerhaft
+
+        }
+    }   
+    
+    public class Exemplar
+    {
+        int ExemplarID = 0;
+        int BuchID;
+        string Autor;
+        string Landdesautoren;
+        string Bildlink;
+        string Sprache;
+        string Link;
+        int Seiten;
+        string Titel;
+        int Erscheinungsjahr;
+        public Exemplar() { }
+        public Exemplar(int BuchID, string Autor, string Landdesautoren, string Bildlink,
+        string Sprache, string Link, int Seiten, string Titel, int Erscheinungsjahr)
+        {
+            this.BuchID = BuchID;
+            this.Autor = Autor;
+            this.Landdesautoren = Landdesautoren;
+            this.Bildlink = Bildlink;
+            this.Sprache = Sprache;
+            this.Link = Link;
+            this.Seiten = Seiten;
+            this.Titel = Titel;
+            this.Erscheinungsjahr = Erscheinungsjahr;
+        }
+
+        public void Crud(string Auswahl, Exemplar exemplar1, Dictionary<int, Exemplar> Exemplare, Dictionary<int, Buch> Bücher)
+        {
+            bool OffenUnterprogramm = true;
+            while (OffenUnterprogramm == true)
+            {
+                Console.Write("Für das Anlegen eines neuen Buches 'c' eingeben\n");
+                Console.Write("Für das Auslesen aller Bücher 'r' eingeben\n");
+                Console.Write("Für das Bearbeiten eines Buches 'u' eingeben\n");
+                Console.Write("Für das Löschen eines Buches 'd' eingeben\n");
+                Console.Write("Für das Beenden des Unterprogramms 'q' eingeben\n");
+                Auswahl = Console.ReadLine();
+                if (Auswahl == "c")
+                    exemplar1.Anlegen(exemplar1, Exemplare, Bücher);
+                else if (Auswahl == "r")
+                    exemplar1.Auslesen(exemplar1, Exemplare, Bücher);
+                else if (Auswahl == "u")
+                    exemplar1.Bearbeiten(exemplar1, Exemplare);
+                else if (Auswahl == "d")
+                    exemplar1.Löschen(exemplar1, Exemplare);
+                else if (Auswahl == "q")
+                    OffenUnterprogramm = false;
+                else
+                    Console.WriteLine("Eingabe ungültig");
+            }
+        }
+        public void Anlegen(Exemplar exemplar, Dictionary<int, Exemplar> Exemplare, Dictionary<int, Buch> Bücher)
+        {
+            ExemplarID = SetzeExemplarID(ExemplarID);
+            int i = Convert.ToInt32(Console.ReadLine());
+            exemplar = new Exemplar(BuchID = Bücher[i].BuchID, Autor = Bücher[i].Autor, Landdesautoren = Bücher[i].Landdesautoren, Bildlink = Bücher[i].Bildlink,
+                Sprache = Bücher[i].Sprache, Link = Bücher[i].Link, Seiten = Convert.ToInt32(Bücher[i].Seiten),
+                Titel = Bücher[i].Titel, Erscheinungsjahr = Convert.ToInt32(Bücher[i].Erscheinungsjahr));
+            Exemplare.Add(ExemplarID, exemplar);
+
+        }
+        static int SetzeExemplarID(int ExemplarIncrement)
+        {
+            return ExemplarIncrement = ExemplarIncrement + 1;
+        }
+        void Auslesen(Exemplar exemplar1, Dictionary<int, Exemplar> Exemplare, Dictionary<int, Buch>  Bücher)
+        {
+            for (int i = 1; i <= ExemplarID; i++)
+            {
+                Console.WriteLine(Exemplare[i].BuchID + i + Exemplare[i].Autor + Exemplare[i].Landdesautoren + Exemplare[i].Bildlink +
+                    Exemplare[i].Sprache + Exemplare[i].Link + Exemplare[i].Seiten + Exemplare[i].Titel + Exemplare[i].Erscheinungsjahr);
+            }
+        }
+        void Bearbeiten( Exemplar exemplar1, Dictionary<int, Exemplar> Exemplare)
+        {
+            int i = Convert.ToInt32(Console.ReadLine());
+            string Autor = Console.ReadLine();
+            if (Autor != "")
+            {
+                Exemplare[i].Autor = Autor;
+            }
+            string Landdesautoren = Console.ReadLine();
+            if (Landdesautoren != "")
+            {
+                Exemplare[i].Landdesautoren = Landdesautoren;
+            }
+            string Bildlink = Console.ReadLine();
+            if (Bildlink != "")
+            {
+                Exemplare[i].Bildlink = Bildlink;
+            }
+            string Sprache = Console.ReadLine();
+            if (Sprache != "")
+            {
+                Exemplare[i].Sprache = Sprache;
+            }
+            string Link = Console.ReadLine();
+            if (Link != "")
+            {
+                Exemplare[i].Link = Link;
+            }
+            int Seiten = Convert.ToInt32(Console.ReadLine());
+            if (Seiten != Convert.ToInt32(""))
+            {
+                Exemplare[i].Seiten = Seiten;
+            }
+            string Titel = Console.ReadLine();
+            if (Titel != "")
+            {
+                Exemplare[i].Titel = Titel;
+            }
+            int Erscheinungsjahr = Convert.ToInt32(Console.ReadLine());
+            if (Erscheinungsjahr != Convert.ToInt32(""))
+            {
+                Exemplare[i].Erscheinungsjahr = Erscheinungsjahr;
+            }
+
+        }
+        void Löschen(Exemplar exemplar1, Dictionary<int, Exemplar> Exemplare)
+        {
+            int i = Convert.ToInt32(Console.ReadLine());
+            Exemplare.Remove(i);
+        }
+    }
+
+    public class Ausleihe
+    {
+        int AusleihID = 0;
+        DateTime AnfangAusleih;
+        DateTime EndeAusleih;
+        string Kunde;
+        public Ausleihe() { }
+        public Ausleihe( DateTime AnfangAusleih, DateTime EndeAusleih, string Kunde)
+        {
+            this.AnfangAusleih = AnfangAusleih;
+            this.EndeAusleih = EndeAusleih;
+            this.Kunde = Kunde;
+        }
+
+    public void Crud(string Auswahl, Ausleihe ausleihe, Dictionary<int, Ausleihe> Ausleihe, Exemplar exemplar, Dictionary<int, Exemplar> Exemplare)
+    {
+        bool OffenUnterprogramm = true;
+            while (OffenUnterprogramm == true)
+            {
+                Console.Write("Für das Anlegen eines neuen Buches 'c' eingeben\n");
+                Console.Write("Für das Auslesen aller Bücher 'r' eingeben\n");
+                Console.Write("Für das Bearbeiten eines Buches 'u' eingeben\n");
+                Console.Write("Für das Löschen eines Buches 'd' eingeben\n");
+                Console.Write("Für das Beenden des Unterprogramms 'q' eingeben\n");
+                Auswahl = Console.ReadLine();
+                if (Auswahl == "c")
+                    ausleihe.Anlegen(ausleihe, Ausleihe, exemplar, Exemplare);
+                else if (Auswahl == "r")
+                    ausleihe.Auslesen(ausleihe, Ausleihe);
+                else if (Auswahl == "u")
+                    ausleihe.Bearbeiten(ausleihe, Ausleihe);
+                else if (Auswahl == "d")
+                    ausleihe.Löschen(ausleihe, Ausleihe);
+                else if (Auswahl == "q")
+                    OffenUnterprogramm = false;
+                else
+                    Console.WriteLine("Eingabe ungültig");
+            }
+    }
+    public void Anlegen(Ausleihe ausleihe, Dictionary<int, Ausleihe> Ausleihe, Exemplar exemplar, Dictionary<int, Exemplar> Exemplare)
+    {
+        ausleihe = new Ausleihe(AnfangAusleih = Convert.ToDateTime(Console.ReadLine()), EndeAusleih = Convert.ToDateTime(Console.ReadLine()), Kunde = Console.ReadLine());
+        AusleihID = SetzeAusleihID(AusleihID);
+        Ausleihe.Add(AusleihID, ausleihe);
+
+    }
+    static int SetzeAusleihID(int AusleihID)
+    {
+        return AusleihID = AusleihID + 1;
+    }
+    void Auslesen(Ausleihe ausleihe, Dictionary<int, Ausleihe> Ausleihe)
+    {
+        for (int i = 1; i <= AusleihID; i++)
+        {
+            Console.WriteLine(i + " " + Ausleihe[i].AnfangAusleih + Ausleihe[i].EndeAusleih + Ausleihe[i].Kunde);
+        }
+    }
+    void Bearbeiten(Ausleihe ausleihe, Dictionary<int, Ausleihe> Ausleihe)
+    {
+        int i = Convert.ToInt32(Console.ReadLine());
+        DateTime AnfangAusleih = Convert.ToDateTime(Console.ReadLine());
+        if (AnfangAusleih != Convert.ToDateTime(""))
+        {
+            Ausleihe[i].AnfangAusleih = AnfangAusleih;
+        }
+        DateTime EndeAusleih = Convert.ToDateTime(Console.ReadLine());
+        if (EndeAusleih != Convert.ToDateTime(""))
+        {
+            Ausleihe[i].EndeAusleih = EndeAusleih;
+        }
+            string Kunde = Console.ReadLine();
+        if (Kunde != "")
+        {
+            Ausleihe[i].Kunde = Kunde;
+        }
+        
+    }
+    void Löschen(Ausleihe ausleihe, Dictionary<int, Ausleihe> Ausleihe)
+    {
+        int i = Convert.ToInt32(Console.ReadLine());
+        Ausleihe.Remove(i);
+    }
+   
+    }
+}
+
+
