@@ -5,4 +5,7 @@ Dies ist eine Konsolenanwendung zum Verwalten eines Inventar von einen Bücherve
 Rolle der Klassen
 Program.cs: Inerface des Programms
 
-Inventar.cs:
+Buch.cs: Eigenschaften eines neuen Buchs
+Exemplar.cs: Eigenschaften eines neuen Exemplars
+Ausleihe.cs: Eigenschaften einer neuen Ausleihe
+
