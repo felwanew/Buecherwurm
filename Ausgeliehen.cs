@@ -13,7 +13,7 @@ namespace Bücherwurmneu
             Ausleihe ausleihe1 = new Ausleihe();
             Console.WriteLine("Bitte Index des Exemplars eingeben");
             int ExemplarID = Convert.ToInt32(Console.ReadLine());
-            
+            ausleihe1.AnfangAusleih = DateTime.now;
             ausleihe1.Exemplar = inventar.InventarExemplare.Find(x => x.ExemplarID == ExemplarID);
             //Key schon vergeben
             if (inventar.InventarExemplare[ExemplarID].EndeAusleih < DateTime.Now)
@@ -22,8 +22,6 @@ namespace Bücherwurmneu
             {
                 inventar.InventarExemplare[ExemplarID].IstVerliehen = true;
                 Console.WriteLine("Bitte Anfangsdatum der Ausleihe eingeben");
-                ausleihe1.AnfangAusleih = Convert.ToDateTime(Console.ReadLine());
-                Console.WriteLine("Bitte Enddatum der Ausleihe  eingeben");
                 ausleihe1.EndeAusleih = Convert.ToDateTime(Console.ReadLine());
                 Console.WriteLine("Bitte Kunde eingeben");
                 ausleihe1.Kunde = Console.ReadLine();
@@ -37,7 +35,7 @@ namespace Bücherwurmneu
             for (int i = 0; i < AusleiheListe.Count; i++)
             {
 
-                Console.WriteLine(i + " " + AusleiheListe[i].AnfangAusleih + " " + AusleiheListe[i].EndeAusleih /*und noch der Rest*/);
+                Console.WriteLine(i + " " + AusleiheListe[i].AnfangAusleih + " " + AusleiheListe[i].EndeAusleih + AusleiheListe[i].Kunde);
             }
         }
         public void Bearbeiten()
@@ -50,19 +48,19 @@ namespace Bücherwurmneu
             {
                 AusleiheListe[i].Exemplar.ExemplarID = Convert.ToInt32(ExemplarID);
             }
-            Console.WriteLine("Bitte Land eingeben");
+            Console.WriteLine("Bitte Anfang der Ausleihe eingeben, wenn Anfang der Ausleihe geändert werden soll\nLeerlassen, wenn Anfang der Ausleihe nicht verändert wird");
             string AnfangAusleih = Console.ReadLine();
             if (AnfangAusleih != "")
             {
                 AusleiheListe[i].AnfangAusleih = Convert.ToDateTime(AnfangAusleih);
             }
-            Console.WriteLine("Bitte Land eingeben");
+            Console.WriteLine("Bitte Ende der Ausleihe eingeben, wenn Ende der Ausleihe geändert werden soll\nLeerlassen, wenn Ende der Ausleihe nicht verändert wird");
             string EndeAusleih = Console.ReadLine();
             if (EndeAusleih != "")
             {
                 AusleiheListe[i].EndeAusleih = Convert.ToDateTime(EndeAusleih);
             }
-            Console.WriteLine("Bitte Land eingeben");
+            Console.WriteLine("Bitte Kunden eingeben, wenn Kunden geändert werden soll\nLeerlassen, wenn Kunden nicht verändert wird");
             string Kunde = Console.ReadLine();
             if (Kunde != "")
             {

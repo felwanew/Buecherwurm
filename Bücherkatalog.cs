@@ -6,29 +6,29 @@ namespace Bücherwurmneu
     public class Bücherkatalog
     {
         public List<Buch> KatalogBücher = new List<Buch>();
-        public Bücherkatalog() { }
-        public void BuchHinzufügen()      //Das Objekt mit der Liste der Bücher wird am Anfang der Main Methode erzeugt
+        public void BuchHinzufügen(Inventar inventar)      //Das Objekt mit der Liste der Bücher wird am Anfang der Main Methode erzeugt
         {
-            Buch buch1 = new Buch();
+            Buch buch = new Buch();
             Console.WriteLine("Bitte Autor eingeben");
-            buch1.Autor = Console.ReadLine();
+            buch.Autor = Console.ReadLine();
             Console.WriteLine("Bitte Land eingeben");
-            buch1.Land = Console.ReadLine();
+            buch.Land = Console.ReadLine();
             Console.WriteLine("Bitte Bildlink eingeben");
-            buch1.Bildlink = Console.ReadLine();
+            buch.Bildlink = Console.ReadLine();
             Console.WriteLine("Bitte Sprache eingeben");
-            buch1.Sprache = Console.ReadLine();
+            buch.Sprache = Console.ReadLine();
             Console.WriteLine("Bitte Link eingeben");
-            buch1.Link = Console.ReadLine();
+            buch.Link = Console.ReadLine();
             Console.WriteLine("Bitte Seitenzahl eingeben");
-            buch1.Seiten = Convert.ToInt32(Console.ReadLine());
+            buch.Seiten = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Bitte Titel eingeben");
-            buch1.Titel = Console.ReadLine();
+            buch.Titel = Console.ReadLine();
             Console.WriteLine("Bitte Erscheinungsjahr eingeben");
-            buch1.Erscheinungsjahr = Convert.ToInt32(Console.ReadLine());
-
+            buch.Erscheinungsjahr = Convert.ToInt32(Console.ReadLine());
             KatalogBücher.Add(buch1);
-            Console.WriteLine(KatalogBücher[0].Autor);        //muss dann noch entfernt werden oder Bestätigung der Eingabe
+            Console.WriteLine(KatalogBücher[KatalogBücher.Count].Autor + KatalogBücher[KatalogBücher.Count].Land + KatalogBücher[KatalogBücher.Count].Bildlink +  KatalogBücher[KatalogBücher.Count].Sprache + KatalogBücher[KatalogBücher.Count].Link + KatalogBücher[KatalogBücher.Count].Seiten + KatalogBücher[KatalogBücher.Count].Titel + KatalogBücher[KatalogBücher.Count].Erscheinungsjahr);        //muss dann noch entfernt werden oder Bestätigung der Eingabe
+            AutoExemplarHinzufügen(buch);
+            AutoExemplarHinzufügen(buch);
         }
 
 

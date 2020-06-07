@@ -17,17 +17,15 @@ namespace Bücherwurmneu
             Console.WriteLine("Bitte Index des Buches eingeben");
             int i = Convert.ToInt32(Console.ReadLine());
             exemplar1.ExemplarBuch = bücherkatalog.KatalogBücher[i];
-            /*exemplar1.ExemplarBuch.Autor = bücherkatalog.KatalogBücher[i].Autor;
-            exemplar1.ExemplarBuch.Land = bücherkatalog.KatalogBücher[i].Land;
-            exemplar1.ExemplarBuch.Bildlink = bücherkatalog.KatalogBücher[i].Bildlink;
-            exemplar1.ExemplarBuch.Sprache = bücherkatalog.KatalogBücher[i].Sprache;
-            exemplar1.ExemplarBuch.Link = bücherkatalog.KatalogBücher[i].Link;
-            exemplar1.ExemplarBuch.Seiten = bücherkatalog.KatalogBücher[i].Seiten;
-            exemplar1.ExemplarBuch.Titel = bücherkatalog.KatalogBücher[i].Titel;
-            exemplar1.ExemplarBuch.Erscheinungsjahr = bücherkatalog.KatalogBücher[i].Erscheinungsjahr;*/
             InventarExemplare.Add(exemplar1);
             Console.WriteLine(InventarExemplare[0].ExemplarBuch.Autor);
             Console.WriteLine(exemplar1.ExemplarID);
+        }
+        public static void AutoExemplarHinzufügen(Buch buch)
+        {
+            Exenplar exemplar1 = new Exemplar();
+            exemplar1.ExemplarID = InventarExemplare.Count;
+            exemplar1.ExemplarBuch = buch;
         }
 
 
