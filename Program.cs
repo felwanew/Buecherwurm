@@ -94,6 +94,7 @@ namespace Bücherwurmneu
                 {
                     Console.Write("\nungültige Eingabe\nBitte nochmal versuchen");
                 }
+                JSONString.WriteJSON(bücherkatalog);
             }
 
             string AuswahloptionenUnterprogrammCrud(string Auswahl, string ZuBearbeiteneKategorie)

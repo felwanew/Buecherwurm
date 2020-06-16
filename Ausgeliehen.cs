@@ -13,7 +13,7 @@ namespace Bücherwurmneu
             Ausleihe ausleihe1 = new Ausleihe();
             Console.WriteLine("Bitte Index des Exemplars eingeben");
             int ExemplarID = Convert.ToInt32(Console.ReadLine());
-            ausleihe1.AnfangAusleih = DateTime.now;
+            ausleihe1.AnfangAusleih = DateTime.Now;
             ausleihe1.Exemplar = inventar.InventarExemplare.Find(x => x.ExemplarID == ExemplarID);
             //Key schon vergeben
             if (inventar.InventarExemplare[ExemplarID].EndeAusleih < DateTime.Now)

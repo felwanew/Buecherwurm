@@ -25,10 +25,10 @@ namespace Bücherwurmneu
             buch.Titel = Console.ReadLine();
             Console.WriteLine("Bitte Erscheinungsjahr eingeben");
             buch.Erscheinungsjahr = Convert.ToInt32(Console.ReadLine());
-            KatalogBücher.Add(buch1);
-            Console.WriteLine(KatalogBücher[KatalogBücher.Count].Autor + KatalogBücher[KatalogBücher.Count].Land + KatalogBücher[KatalogBücher.Count].Bildlink +  KatalogBücher[KatalogBücher.Count].Sprache + KatalogBücher[KatalogBücher.Count].Link + KatalogBücher[KatalogBücher.Count].Seiten + KatalogBücher[KatalogBücher.Count].Titel + KatalogBücher[KatalogBücher.Count].Erscheinungsjahr);        //muss dann noch entfernt werden oder Bestätigung der Eingabe
-            AutoExemplarHinzufügen(buch);
-            AutoExemplarHinzufügen(buch);
+            KatalogBücher.Add(buch);
+            Console.WriteLine(KatalogBücher[KatalogBücher.Count-1].Autor + KatalogBücher[KatalogBücher.Count-1].Land + KatalogBücher[KatalogBücher.Count-1].Bildlink +  KatalogBücher[KatalogBücher.Count-1].Sprache + KatalogBücher[KatalogBücher.Count-1].Link + KatalogBücher[KatalogBücher.Count-1].Seiten + KatalogBücher[KatalogBücher.Count-1].Titel + KatalogBücher[KatalogBücher.Count-1].Erscheinungsjahr);        //muss dann noch entfernt werden oder Bestätigung der Eingabe
+            Inventar.AutoExemplarHinzufügen(buch);
+            Inventar.AutoExemplarHinzufügen(buch);
         }
 
 
@@ -37,7 +37,7 @@ namespace Bücherwurmneu
             for(int i = 0; i < KatalogBücher.Count; i++)
             {
 
-                Console.WriteLine(i + " " + KatalogBücher[i].Autor /*und noch der Rest*/);
+                Console.WriteLine(i + "    " + KatalogBücher[i].Autor + "    " +KatalogBücher[i].Land + "    " +KatalogBücher[i].Bildlink +"    " +  KatalogBücher[i].Sprache +"    " + KatalogBücher[i].Link +"    " + KatalogBücher[i].Seiten +"    " + KatalogBücher[i].Titel +"    " + KatalogBücher[i].Erscheinungsjahr /*und noch der Rest*/);
             }
         }
         public void Bearbeiten()     //Wenn Einträge nicht bearbeitet werden sollen, dann leer lassen
