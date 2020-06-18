@@ -50,44 +50,44 @@ namespace Bücherwurmneu
             {
                 KatalogBücher[i].Autor = Autor;
             }
-            Console.WriteLine("Bitte Land eingeben");
+            Console.WriteLine("Bitte Land eingeben, wenn Land geändert werden soll\nLeerlassen, wenn Land nicht verändert wird");
             string Landdesautoren = Console.ReadLine();
             if (Landdesautoren != "")
             {
                 KatalogBücher[i].Land = Landdesautoren;
             }
-            Console.WriteLine("Bitte Bildlink eingeben");
+            Console.WriteLine("Bitte Bildlink eingeben, wenn Bildlink geändert werden soll\nLeerlassen, wenn Bildlink nicht verändert wird");
             string Bildlink = Console.ReadLine();
             if (Bildlink != "")
             {
                 KatalogBücher[i].Bildlink = Bildlink;
             }
-            Console.WriteLine("Bitte Sprache eingeben");
+            Console.WriteLine("Bitte Sprache eingeben, wenn Sprache geändert werden soll\nLeerlassen, wenn Sprache nicht verändert wird");
             string Sprache = Console.ReadLine();
             if (Sprache != "")
             {
                 KatalogBücher[i].Sprache = Sprache;
             }
-            Console.WriteLine("Bitte Link eingeben");
+            Console.WriteLine("Bitte Link eingeben, wenn Link geändert werden soll\nLeerlassen, wenn Link nicht verändert wird");
             string Link = Console.ReadLine();
             if (Link != "")
             {
                 KatalogBücher[i].Link = Link;
             }
-            Console.WriteLine("Bitte Seiten eingeben");
+            Console.WriteLine("Bitte Seitenzahl eingeben, wenn Seitenzahl geändert werden soll\nLeerlassen, wenn Seitenzahl nicht verändert wird");
             
             string Seiten = Console.ReadLine();
             if (Seiten != "")
             {
                 KatalogBücher[i].Seiten = Convert.ToInt32(Seiten);
             }
-            Console.WriteLine("Bitte Titel eingeben");
+            Console.WriteLine("Bitte Titel eingeben, wenn Titel geändert werden soll\nLeerlassen, wenn Titel nicht verändert wird");
             string Titel = Console.ReadLine();
             if (Titel != "")
             {
                 KatalogBücher[i].Titel = Titel;
             }
-            Console.WriteLine("Bitte Erscheinungsjahr eingeben");
+            Console.WriteLine("Bitte Erscheinungsjahr eingeben, wenn Erscheinungsjahr geändert werden soll\nLeerlassen, wenn Erscheinungsjahr nicht verändert wird");
             string Erscheinungsjahr = Console.ReadLine();
             if (Erscheinungsjahr != "")
             {
