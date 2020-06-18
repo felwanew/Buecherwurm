@@ -99,10 +99,12 @@ namespace Bücherwurmneu
 
             string AuswahloptionenUnterprogrammCrud(string Auswahl, string ZuBearbeiteneKategorie)
             {
-                Console.Write("Für das Anlegen eines neuen " + ZuBearbeiteneKategorie + "s 'c' eingeben\n");
-                Console.Write("Für das Auslesen aller " + ZuBearbeiteneKategorie + "er 'r' eingeben\n");
-                Console.Write("Für das Bearbeiten eines " + ZuBearbeiteneKategorie + "es 'u' eingeben\n");
-                Console.Write("Für das Löschen eines " + ZuBearbeiteneKategorie +"es 'd' eingeben\n");
+                Console.Write(ZuBearbeiteneKategorie + "-Menü\n");
+                Console.Write("=========================================================================\n");
+                Console.Write("Für das Anlegen eines neuen Eintrags 'c' eingeben\n");
+                Console.Write("Für das Auslesen aller Einträge 'r' eingeben\n");
+                Console.Write("Für das Bearbeiten eines Eintrags 'u' eingeben\n");
+                Console.Write("Für das Löschen eines Eintrags 'd' eingeben\n");
                 Console.Write("Für das Beenden des Unterprogramms 'q' eingeben\n");
                 return Auswahl = Console.ReadLine();
             }

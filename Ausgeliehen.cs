@@ -22,6 +22,8 @@ namespace Bücherwurmneu
             {
                 inventar.InventarExemplare[ExemplarID].IstVerliehen = true;
                 Console.WriteLine("Bitte Anfangsdatum der Ausleihe eingeben");
+                ausleihe1.AnfangAusleih = Convert.ToDateTime(Console.ReadLine());
+                Console.WriteLine("Bitte Enddatum der Ausleihe eingeben");
                 ausleihe1.EndeAusleih = Convert.ToDateTime(Console.ReadLine());
                 Console.WriteLine("Bitte Kunde eingeben");
                 ausleihe1.Kunde = Console.ReadLine();
