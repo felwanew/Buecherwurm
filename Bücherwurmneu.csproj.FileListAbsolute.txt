@@ -1,0 +1,13 @@
+C:\Users\49152\Source\Repos\Bücherwurmneu\Bücherwurmneu\bin\Debug\netcoreapp3.1\Bücherwurmneu.exe
+C:\Users\49152\Source\Repos\Bücherwurmneu\Bücherwurmneu\bin\Debug\netcoreapp3.1\Bücherwurmneu.deps.json
+C:\Users\49152\Source\Repos\Bücherwurmneu\Bücherwurmneu\bin\Debug\netcoreapp3.1\Bücherwurmneu.runtimeconfig.json
+C:\Users\49152\Source\Repos\Bücherwurmneu\Bücherwurmneu\bin\Debug\netcoreapp3.1\Bücherwurmneu.runtimeconfig.dev.json
+C:\Users\49152\Source\Repos\Bücherwurmneu\Bücherwurmneu\bin\Debug\netcoreapp3.1\Bücherwurmneu.dll
+C:\Users\49152\Source\Repos\Bücherwurmneu\Bücherwurmneu\bin\Debug\netcoreapp3.1\Bücherwurmneu.pdb
+C:\Users\49152\Source\Repos\Bücherwurmneu\Bücherwurmneu\obj\Debug\netcoreapp3.1\Bücherwurmneu.csproj.CoreCompileInputs.cache
+C:\Users\49152\Source\Repos\Bücherwurmneu\Bücherwurmneu\obj\Debug\netcoreapp3.1\Bücherwurmneu.AssemblyInfoInputs.cache
+C:\Users\49152\Source\Repos\Bücherwurmneu\Bücherwurmneu\obj\Debug\netcoreapp3.1\Bücherwurmneu.AssemblyInfo.cs
+C:\Users\49152\Source\Repos\Bücherwurmneu\Bücherwurmneu\obj\Debug\netcoreapp3.1\Bücherwurmneu.dll
+C:\Users\49152\Source\Repos\Bücherwurmneu\Bücherwurmneu\obj\Debug\netcoreapp3.1\Bücherwurmneu.pdb
+C:\Users\49152\Source\Repos\Bücherwurmneu\Bücherwurmneu\obj\Debug\netcoreapp3.1\Bücherwurmneu.genruntimeconfig.cache
+C:\Users\49152\Source\Repos\Bücherwurmneu\Bücherwurmneu\obj\Debug\netcoreapp3.1\Bücherwurmneu.csprojAssemblyReference.cache
