@@ -37,7 +37,7 @@ namespace Bücherwurmneu
             for (int i = 0; i < AusleiheListe.Count; i++)
             {
 
-                Console.WriteLine(i + " " + AusleiheListe[i].AnfangAusleih + " " + AusleiheListe[i].EndeAusleih + AusleiheListe[i].Kunde);
+                Console.WriteLine(i + " " + AusleiheListe[i].AnfangAusleih + " " + AusleiheListe[i].EndeAusleih + " " + AusleiheListe[i].Kunde);
             }
         }
         public void Bearbeiten()
