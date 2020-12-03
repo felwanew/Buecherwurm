@@ -1,5 +1,3 @@
-# ZwischenstandZenker
-
 Dies ist eine Konsolenanwendung zum Verwalten eines Inventar von einen Bücherverleih
 
 Rolle der Klassen
